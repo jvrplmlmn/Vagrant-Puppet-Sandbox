@@ -2,8 +2,8 @@
 # vi: set ft=ruby st=2 ts=2 :
 
 nodes = [
-	{:hostname => 'puppetmaster', :ip_address => '10.0.33.10', :box => 'base'},
-	{:hostname => 'client1', :ip_address => '10.0.33.11', :box => 'base'},
+	{:hostname => 'puppetmaster', :ip_address => '10.0.33.10', :box => 'precise32'},
+	{:hostname => 'client1', :ip_address => '10.0.33.11', :box => 'precise32'},
 ]
 
 Vagrant.configure("2") do |config|
@@ -15,6 +15,9 @@ Vagrant.configure("2") do |config|
 		config.vm.define node[:hostname] do |node_config|
   		# Every Vagrant virtual environment requires a box to build off of.
 			node_config.vm.box = node[:box]
+  		# The url from where the 'config.vm.box' box will be fetched if it
+  		# doesn't already exist on the user's system.
+  	  node_config.vm.box_url = 'http://files.vagrantup.com' + node_config.vm.box + '.box'
 			node_config.vm.hostname = node[:hostname]
   		# Create a private network, which allows host-only access to the machine
   		# using a specific IP.
