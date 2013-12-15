@@ -1,5 +1,5 @@
 # -*- mode: ruby -*-
-# vi: set ft=ruby :
+# vi: set ft=ruby st=2 ts=2 :
 
 Vagrant.configure("2") do |config|
   # All Vagrant configuration is done here. The most common configuration
