@@ -4,6 +4,7 @@
 nodes = [
 	{:hostname => 'puppetmaster', :ip_address => '10.0.33.10', :box => 'precise32'},
 	{:hostname => 'client1', :ip_address => '10.0.33.11', :box => 'precise32'},
+	{:hostname => 'client2', :ip_address => '10.0.33.12', :box => 'precise32'},
 ]
 
 Vagrant.configure("2") do |config|
