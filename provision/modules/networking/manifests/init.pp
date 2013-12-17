@@ -4,7 +4,7 @@ class networking {
     owner   => 'root',
 	group   => 'root',
 	mode    => '0644',
-	content => template(networking/hosts.erb),
+	content => template('networking/hosts.erb'),
   }
 
 }
