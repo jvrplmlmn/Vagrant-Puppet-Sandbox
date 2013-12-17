@@ -22,12 +22,13 @@ Vagrant.configure("2") do |config|
   		# Create a private network, which allows host-only access to the machine
   		# using a specific IP.
 			node_config.vm.network :private_network, ip: node[:ip_address]
+
+			node_config.vm.provision :puppet do |puppet|
+				puppet.manifests_path = 'provision/manifests'
+				puppet.module_path = 'provision/modules'
+			end
 		end
 	end
-
-  # The url from where the 'config.vm.box' box will be fetched if it
-  # doesn't already exist on the user's system.
-  # config.vm.box_url = "http://domain.com/path/to/above.box"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -36,11 +37,8 @@ Vagrant.configure("2") do |config|
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
   config.vm.provider :virtualbox do |vb|
-  #   # Use VBoxManage to customize the VM. For example to change memory:
-    vb.customize ["modifyvm", :id, "--memory", "256"]
+  	vb.customize ["modifyvm", :id, "--memory", "256"]
   end
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
