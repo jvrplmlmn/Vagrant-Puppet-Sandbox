@@ -1,6 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby st=2 ts=2 :
 
+domain = 'domain.edu'
+
 nodes = [
 	{:hostname => 'puppetmaster', :ip_address => '10.0.33.10', :box => 'precise32'},
 	{:hostname => 'client1', :ip_address => '10.0.33.11', :box => 'precise32'},
@@ -19,7 +21,7 @@ Vagrant.configure("2") do |config|
   		# The url from where the 'config.vm.box' box will be fetched if it
   		# doesn't already exist on the user's system.
   	  node_config.vm.box_url = 'http://files.vagrantup.com' + node_config.vm.box + '.box'
-			node_config.vm.hostname = node[:hostname]
+			node_config.vm.hostname = node[:hostname] + '.' + domain
   		# Create a private network, which allows host-only access to the machine
   		# using a specific IP.
 			node_config.vm.network :private_network, ip: node[:ip_address]
