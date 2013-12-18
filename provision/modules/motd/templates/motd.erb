@@ -1,0 +1,11 @@
+Welcome to <%= @hostname -%> - <%= @fqdn -%> - <%= @operatingsystem -%> <%= @operatingsystemrelease %>
+This node is under the control of Puppet <%= @puppetversion %>
+
+Kernel: <%= @kernel -%> <%= @kernelversion %>
+Ram: <%= @memorysize %>
+Days Up: <%= @uptime_days %>
+
+IP Address (eth0): <%= @ipaddress_eth0 %>
+Netmask (eth0): <%= @netmask_eth0 %>
+IP Address (eth1): <%= @ipaddress_eth1 %>
+Netmask (eth1): <%= @netmask_eth1 %>
