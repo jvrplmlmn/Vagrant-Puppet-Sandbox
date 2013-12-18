@@ -21,4 +21,13 @@ class puppet {
 		ensure  => running,
 		require => Package['puppet'],
     }
+
+    # WA to start the agent on Ubuntu
+    # Read more: http://serverfault.com/a/275059
+    exec { 'start_puppet':
+      onlyif  => '/usr/bin/test -f /etc/default/puppet',
+      command => '/bin/sed -i /etc/default/puppet -e "s/START=no/START=yes/"',
+      require => Package['puppet'],
+      before  => Service['puppet'],
+    }
 }
