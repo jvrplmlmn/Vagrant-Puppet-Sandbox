@@ -9,3 +9,8 @@ class { 'repos': stage => 'pre-production' }
 class { 'motd': }
 class { 'networking': }
 class { 'puppet': }
+
+# Puppetmaster
+if $hostname == 'puppetmaster' {
+  class { 'puppet::server': }
+}
