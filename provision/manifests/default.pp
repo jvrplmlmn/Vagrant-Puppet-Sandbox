@@ -3,14 +3,19 @@
 #
 
 
-stage { 'pre-production': before => Stage['main']}
+#stage { 'pre-production': before => Stage['main']}
+stage { 'pre-production': }
+stage { 'post-install': }
+
+Stage['pre-production'] -> Stage['main']
+Stage['main'] -> Stage['post-install']
 
 class { 'repos': stage => 'pre-production' }
-class { 'motd': }
 class { 'networking': }
 class { 'puppet': }
+class { 'motd': }
 
 # Puppetmaster
-if $hostname == 'puppetmaster' {
+if $hostname == 'puppet' {
   class { 'puppet::server': }
 }
