@@ -13,7 +13,7 @@ Stage['main'] -> Stage['post-install']
 class { 'repos': stage => 'pre-production' }
 class { 'networking': }
 class { 'puppet': }
-class { 'motd': }
+class { 'motd': stage => 'post-install' }
 
 # Puppetmaster
 if $hostname == 'puppet' {
