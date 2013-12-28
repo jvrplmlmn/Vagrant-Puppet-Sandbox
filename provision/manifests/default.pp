@@ -13,6 +13,7 @@ Stage['main'] -> Stage['post-install']
 class { 'repos': stage => 'pre-production' }
 class { 'networking': }
 class { 'puppet': }
+class { 'git': }
 class { 'motd': stage => 'post-install' }
 
 # Puppetmaster
